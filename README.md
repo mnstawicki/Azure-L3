@@ -2,7 +2,7 @@
 
 Naming convention:
 
-`project-id>-<role>-<resource>-<id>`
+`<project-id>-<role>-<resource>-<id>`
 
 where:
 
