@@ -13,8 +13,8 @@ where:
 
 Examples:
 
-`lab03-app-vm-001  
-ecommie-web-vnet-002`
+`lab03-app-vm-001'  
+'ecommie-web-vnet-002`
 
 
 # Lesson 3, Task 3.3
