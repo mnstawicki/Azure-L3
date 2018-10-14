@@ -18,7 +18,7 @@ NotDataActions   : {}
 AssignableScopes : {/subscriptions/cc04e834-5dbd-4aeb-a95f-a583c2e87ab2}
 ```
 
-JSON format:
+JSON definition of the new role:
 
 ```
 PS Azure:\> Get-AzureRmRoleDefinition "Virtual Machine Operator" | ConvertTo-Json{
