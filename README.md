@@ -39,7 +39,7 @@ AssignableScopes : {/subscriptions/cc04e834-5dbd-4aeb-a95f-a583c2e87ab2}
 
 JSON definition of the new role:
 
-```
+```json
 PS Azure:\> Get-AzureRmRoleDefinition "Virtual Machine Operator" | ConvertTo-Json{
   "Name": "Virtual Machine Operator",
   "Id": "e9588f45-bee6-4936-b551-3b7864f8bbb1",
