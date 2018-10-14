@@ -13,7 +13,7 @@ where:
 
 Examples:
 
-`lab03-app-vm-001
+`lab03-app-vm-001  
 ecommie-web-vnet-002`
 
 
