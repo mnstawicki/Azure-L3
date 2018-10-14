@@ -8,12 +8,12 @@ where:
 
 `<project-id>` - id of the project, 3 to 10 lowercase letters and/or digits  
 `<role>` - functional role in the project  
-`<resource>` - one of the following: `vnet, vm, disk, dstorage`  
+`<resource>` - one of the following: `vnet|vm|disk|dstorage`  
 `<id>` - resource id within the project, 3 digits  
 
 Examples:
 
-`lab03-app-vm-001'  
+`lab03-app-vm-001`  
 'ecommie-web-vnet-002`
 
 
