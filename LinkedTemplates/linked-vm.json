@@ -8,6 +8,12 @@
 				"description": "Virtual machine size"
 			}
 		},
+		"virtualMachineName": {
+			"type": "string",
+			"metadata": {
+				"description": "Virtual machine name"
+			}
+		},
 		"publisher": {
 			"type": "string",
 			"metadata": {
