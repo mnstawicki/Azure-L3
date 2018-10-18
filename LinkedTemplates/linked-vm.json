@@ -61,6 +61,24 @@
 			"metadata": {
 				"description": "Location for all resources."
 			}
+		},
+		"mainPrefix": {
+			"type": "string",
+			"metadata": {
+				"description": "mainPrefix"
+			}
+		},
+		"subnet1": {
+			"type": "string",
+			"metadata": {
+				"description": "subnet1"
+			}
+		},
+		"subnet2": {
+			"type": "string",
+			"metadata": {
+				"description": "subnet2"
+			}
 		}
 	},
 	"variables": {},
@@ -102,6 +120,94 @@
 						"id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('nicname'))]"
 					}]
 				}
+			}
+		},
+			{
+			"type": "Microsoft.Network/virtualNetworks",
+			"name": "virtualNetwork",
+			"apiVersion": "2017-06-01",
+			"location": "[parameters('location')]",
+			"comments": "This will build a Virtual Network.",
+			"properties": {
+				"addressSpace": {
+					"addressPrefixes": [
+						"[parameters('mainPrefix')]"
+					]
+				},
+				"subnets": [{
+						"name": "subnet1",
+						"properties": {
+							"addressPrefix": "parameters('subnet1')]"
+						}
+					},
+					{
+						"name": "subnet2",
+						"properties": {
+							"addressPrefix": "parameters('subnet2')]"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "nic-1",
+			"type": "Microsoft.Network/networkInterfaces",
+			"apiVersion": "2017-06-01",
+			"location": "[parameters('location')]",
+			"comments": "This will be your Primary NIC",
+			"dependsOn": [
+				"publicIpAddress",
+				"networkSecurityGroup",
+				"virtualNetwork"
+			],
+			"properties": {
+				"ipConfigurations": [{
+					"name": "ipconfig1",
+					"properties": {
+						"subnet": {
+							"id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', 'virtualNetworkName', 'subnet1)]"
+						},
+						"privateIPAllocationMethod": "Dynamic",
+						"publicIpAddress": {
+							"id": "[resourceId('Microsoft.Network/publicIpAddresses', 'publicIpAddress'))]"
+						}
+					}
+				}],
+				"networkSecurityGroup": {
+					"id": "[resourceId('Microsoft.Network/networkSecurityGroups', 'networkSecurityGroupName')]"
+				}
+			}
+		},
+		{
+			"name": "publicIpAddress",
+			"type": "Microsoft.Network/publicIPAddresses",
+			"apiVersion": "2017-06-01",
+			"location": "[parameters('location')]",
+			"comments": "Public IP for your Primary NIC",
+			"properties": {
+				"publicIPAllocationMethod": "Dynamic"
+			}
+		},
+		{
+			"name": "networkSecurityGroup",
+			"type": "Microsoft.Network/networkSecurityGroups",
+			"apiVersion": "2016-09-01",
+			"location": "[parameters('location')]",
+			"comments": "Network Security Group (NSG) for your Primary NIC",
+			"properties": {
+				"securityRules": [{
+					"name": "default-allow-ssh",
+					"properties": {
+						"priority": 1000,
+						"sourceAddressPrefix": "*",
+						"protocol": "Tcp",
+						"destinationPortRange": "22",
+						"access": "Allow",
+						"direction": "Inbound",
+						"sourcePortRange": "*",
+						"destinationAddressPrefix": "*"
+					}
+				}]
 			}
 		}
 	],
