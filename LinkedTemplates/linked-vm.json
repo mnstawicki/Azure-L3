@@ -169,7 +169,7 @@
 						},
 						"privateIPAllocationMethod": "Dynamic",
 						"publicIpAddress": {
-							"id": "[resourceId('Microsoft.Network/publicIpAddresses', 'publicIpAddress'))]"
+							"id": "[resourceId('Microsoft.Network/publicIPAddresses','PublicIPAddress')]"
 						}
 					}
 				}],
