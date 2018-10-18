@@ -99,7 +99,7 @@
 						"properties": {
 							"primary": true
 						},
-						"id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('nicname'))]"
+						"id": "[resourceId('Microsoft.Network/networkInterfaces', 'nic-1')]"
 					}]
 				}
 			}
