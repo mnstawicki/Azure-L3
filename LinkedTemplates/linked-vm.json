@@ -165,7 +165,7 @@
 					"name": "ipconfig1",
 					"properties": {
 						"subnet": {
-							"id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', 'virtualNetworkName', 'subnet1')]"
+							"id": "virtualNetwork/subnets/subnet1"
 						},
 						"privateIPAllocationMethod": "Dynamic",
 						"publicIpAddress": {
