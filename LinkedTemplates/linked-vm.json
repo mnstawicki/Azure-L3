@@ -40,7 +40,6 @@
 		},
 		"nicname": {
 			"type": "string",
-			"defaultValue": "nic-1",
 			"metadata": {
 				"description": "NIC name"
 			}
