@@ -71,7 +71,7 @@
 			"location": "[parameters('location')]",
 			"comments": "VM being created",
 			"dependsOn": [
-				"[parameters('nicname')]"
+				"[resourceId('Microsoft.Network/networkInterfaces/', parameters('nicname'))]"
 			],
 			"properties": {
 				"osProfile": {
